@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NES Emulator - Bomberman</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0f;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #game {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        #loading h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #333;
+            border-top: 4px solid #ff6b6b;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loading">
+        <div class="spinner"></div>
+        <h2>Loading Bomberman...</h2>
+        <p id="status">Initializing emulator...</p>
+    </div>
+    <div id="game"></div>
+
+    <script>
+        // Get the game file from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const gameParam = urlParams.get('game') || '/Bomberman.nes';
+
+        // Update status
+        document.getElementById('status').textContent = 'Loading ROM: ' + gameParam;
+
+        // EmulatorJS Configuration
+        EJS_player = '#game';
+        EJS_gameUrl = gameParam;
+        EJS_core = 'nes';
+        EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
+        EJS_startOnLoaded = true;
+        EJS_language = 'en-US';
+
+        // WASD + PC standard controls
+        EJS_defaultControls = {
+            0: {
+                0: { 'value': 'j' },           // A button - J
+                1: { 'value': 'k' },           // B button - K  
+                2: { 'value': 'shift' },       // Select
+                3: { 'value': 'enter' },       // Start
+                4: { 'value': 'w' },           // D-Pad Up - W
+                5: { 'value': 's' },           // D-Pad Down - S
+                6: { 'value': 'a' },           // D-Pad Left - A
+                7: { 'value': 'd' },           // D-Pad Right - D
+                8: { 'value': 'u' },           // Extra button
+                9: { 'value': 'i' },           // Extra button
+                24: { 'value': '1' },          // Quick Save
+                25: { 'value': '2' },          // Quick Load
+            },
+            1: {},
+            2: {},
+            3: {}
+        };
+
+        // Hide loading when game starts
+        EJS_onGameStart = function () {
+            document.getElementById('loading').style.display = 'none';
+        };
+    </script>
+    <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
+</body>
+
+</html>

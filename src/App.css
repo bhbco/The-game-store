@@ -1,0 +1,49 @@
+li {
+  list-style-type: none;
+  display: inline-block;
+  margin-right: 35px;
+  vertical-align: middle;
+}
+
+.navlink {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+}
+
+nav {
+  padding: 2px;
+  background-color: rgb(39, 8, 63);
+
+}
+
+.logo {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+#carouselExampleAutoplaying {
+  margin: 20px auto;
+}
+
+#app-body {
+  background-color: #4a0549;
+}
+
+.carousel-inner {
+  border-radius: 20px;
+}
+
+.card {
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #111827 0%, #0b1220 100%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16 40px rgba(0, 0, 0, 0.5);
+}
