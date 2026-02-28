@@ -61,10 +61,11 @@ const Transaction = () => {
         // EmailJS configuration
         const serviceId = 'service_59oh6lq';
         const templateId = 'template_mef388r';
-        const publicKey = 'Hi0EA2FB8JSVdCbCN';
+        const publicKey = 'Hi0EA2FB8USVdCbCN';
 
         const templateParams = {
             to_email: formData.email,
+            email: formData.email,
             customer_name: formData.cardholderName,
             game_title: game.title,
             game_price: game.price,
